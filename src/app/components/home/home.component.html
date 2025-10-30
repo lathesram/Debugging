@@ -1,0 +1,44 @@
+<div class="container-fluid py-5">
+  <!-- Header Section -->
+  <div class="text-center mb-5">
+    <h1 class="display-4 fw-bold text-primary mb-3">🔧 Angular Debug Playground</h1>
+    <p class="lead text-muted">Interactive debugging scenarios for frontend development training</p>
+    <p class="text-secondary">Each card below demonstrates a specific debugging technique. Click "View Example" to explore!</p>
+  </div>
+
+  <!-- Debug Cards Grid -->
+  <div class="container">
+    <div class="row g-4">
+      @for (card of debugCards; track card.route) {
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body d-flex flex-column">
+              <!-- Icon & Title -->
+              <div class="d-flex align-items-center mb-3">
+                <span class="fs-2 me-3">{{ card.icon }}</span>
+                <h5 class="card-title mb-0 fw-semibold">{{ card.title }}</h5>
+              </div>
+              
+              <!-- Description -->
+              <p class="card-text text-muted flex-grow-1">{{ card.description }}</p>
+              
+              <!-- Action Button -->
+              <div class="mt-auto">
+                <a [routerLink]="card.route" class="btn btn-outline-primary btn-sm">
+                  View Example →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Footer Info -->
+  <div class="text-center mt-5 pt-4 border-top">
+    <p class="text-muted">
+      <small>💡 <strong>Pro Tip:</strong> Keep your DevTools open while exploring these examples!</small>
+    </p>
+  </div>
+</div>

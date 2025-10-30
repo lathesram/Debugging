@@ -1,0 +1,115 @@
+<a routerLink="/" class="btn btn-secondary back-btn">← Back to Home</a>
+
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="display-5 fw-bold text-primary">📊 Network Tab Essentials</h1>
+    <p class="lead text-muted">Master network debugging with different HTTP scenarios and error handling</p>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      
+      <!-- Request Buttons -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">🌐 HTTP Request Scenarios</h3>
+        <p class="text-muted mb-3">Try different types of requests and observe them in the Network tab</p>
+        
+        <div class="row g-2">
+          <div class="col-md-6">
+            <button class="btn btn-success w-100" (click)="makeSuccessRequest()" [disabled]="isLoading">
+              ✅ Successful Request
+            </button>
+          </div>
+          <div class="col-md-6">
+            <button class="btn btn-warning w-100" (click)="make404Request()" [disabled]="isLoading">
+              📭 404 Not Found
+            </button>
+          </div>
+          <div class="col-md-6">
+            <button class="btn btn-info w-100" (click)="makeSlowRequest()" [disabled]="isLoading">
+              🐌 Slow Request (3s)
+            </button>
+          </div>
+          <div class="col-md-6">
+            <button class="btn btn-danger w-100" (click)="makeInvalidUrlRequest()" [disabled]="isLoading">
+              🚫 Invalid URL/Network Error
+            </button>
+          </div>
+        </div>
+        
+        <div class="text-center mt-3" *ngIf="isLoading">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <p class="mt-2 text-muted">Making request... Check Network tab!</p>
+        </div>
+      </div>
+
+      <!-- Response Log -->
+      <div class="demo-section" *ngIf="responses.length > 0">
+        <h3 class="h4 mb-3">📋 Request History</h3>
+        <div class="demo-output" style="max-height: 300px; overflow-y: auto;">
+          <div *ngFor="let response of responses" class="mb-2 p-2 border rounded">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <span [class]="'badge ' + (response.type === 'success' ? 'bg-success' : 
+                             response.type === '404' ? 'bg-warning' : 
+                             response.type === 'network' ? 'bg-danger' : 'bg-secondary')">
+                  {{ response.status || 'ERR' }}
+                </span>
+                <strong class="ms-2">{{ response.message }}</strong>
+              </div>
+              <small class="text-muted">{{ response.timestamp }}</small>
+            </div>
+            <small class="text-muted d-block mt-1">{{ response.data | json }}</small>
+          </div>
+        </div>
+        <button class="btn btn-outline-secondary btn-sm mt-2" (click)="clearResponses()">Clear History</button>
+      </div>
+
+      <!-- Instructions -->
+      <div class="alert alert-info">
+        <h5 class="alert-heading">📊 How to Use the Network Tab:</h5>
+        <ol class="mb-3">
+          <li>Open Developer Tools (F12) → <strong>Network</strong> tab</li>
+          <li>Ensure recording is enabled (red circle should be filled)</li>
+          <li>Clear existing entries (🗑️ clear button)</li>
+          <li>Click any request button above</li>
+          <li>Watch the request appear in the Network tab</li>
+          <li>Click on the request to see detailed information</li>
+        </ol>
+        
+        <div class="alert alert-success">
+          <strong>🔍 What to Analyze in Network Tab:</strong>
+          <ul class="mb-2">
+            <li><strong>Status:</strong> 200 (OK), 404 (Not Found), 500 (Server Error), etc.</li>
+            <li><strong>Method:</strong> GET, POST, PUT, DELETE</li>
+            <li><strong>Size:</strong> Request and response payload sizes</li>
+            <li><strong>Time:</strong> Total request duration</li>
+            <li><strong>Waterfall:</strong> Visual timeline of request phases</li>
+          </ul>
+          
+          <strong>📋 Request Details Tabs:</strong>
+          <ul class="mb-0">
+            <li><strong>Headers:</strong> Request/response headers</li>
+            <li><strong>Preview:</strong> Formatted response (JSON, HTML, etc.)</li>
+            <li><strong>Response:</strong> Raw response data</li>
+            <li><strong>Timing:</strong> Detailed timing breakdown</li>
+          </ul>
+        </div>
+        
+        <div class="alert alert-warning">
+          <strong>💡 Network Debugging Tips:</strong>
+          <ul class="mb-0">
+            <li>Filter by request type (XHR, JS, CSS, Images)</li>
+            <li>Use the search box to find specific requests</li>
+            <li>Right-click requests to copy as cURL or fetch</li>
+            <li>Check CORS issues in failed requests</li>
+            <li>Monitor slow requests for performance optimization</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

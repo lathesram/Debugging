@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header bg-info text-white">
+    <h6 class="mb-0">👶 Child Component</h6>
+  </div>
+  <div class="card-body">
+    
+    <!-- Display Input Properties -->
+    <div class="mb-3">
+      <h6>📥 Inputs from Parent:</h6>
+      <small class="text-muted">Message:</small> {{ message }}<br>
+      <small class="text-muted">Counter:</small> {{ counter }}<br>
+      <small class="text-muted">User:</small> {{ userData?.name || 'No user' }} ({{ userData?.role || 'No role' }})
+    </div>
+
+    <!-- Output Actions -->
+    <div class="mb-3">
+      <h6>📤 Send to Parent:</h6>
+      <button class="btn btn-sm btn-outline-primary me-2" (click)="sendMessage()">
+        Send Message
+      </button>
+      <button class="btn btn-sm btn-outline-success me-2" (click)="incrementCounter()">
+        + Counter
+      </button>
+      <button class="btn btn-sm btn-outline-danger" (click)="decrementCounter()">
+        - Counter
+      </button>
+    </div>
+
+    <!-- Child State -->
+    <div class="small text-muted">
+      <strong>Child State:</strong> Component rendered and active
+    </div>
+
+  </div>
+</div>

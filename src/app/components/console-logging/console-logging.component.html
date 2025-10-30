@@ -1,0 +1,89 @@
+<a routerLink="/" class="btn btn-secondary back-btn">← Back to Home</a>
+
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="display-5 fw-bold text-primary">🖥️ Console Logging Demo</h1>
+    <p class="lead text-muted">Explore different console methods and debugging techniques</p>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      
+      <!-- Basic Logging -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">1. Basic Console Methods</h3>
+        <p class="text-muted mb-3">Different console methods for various message types</p>
+        <button class="btn btn-primary" (click)="runBasicLogging()">Run Basic Logging</button>
+        <div class="code-block mt-3">
+          <pre>console.log('Basic log message');
+console.info('Info message');
+console.warn('Warning message');
+console.error('Error message');</pre>
+        </div>
+      </div>
+
+
+
+      <!-- Table Logging -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">2. Console Table</h3>
+        <p class="text-muted mb-3">Display arrays and objects in a formatted table</p>
+        <button class="btn btn-primary" (click)="runTableLogging()">Run Table Logging</button>
+        <div class="code-block mt-3">
+          <pre>const users = [
+  {{ '{' }} id: 1, name: 'John', role: 'Developer' {{ '}' }},
+  {{ '{' }} id: 2, name: 'Jane', role: 'Designer' {{ '}' }}
+];
+console.table(users);</pre>
+        </div>
+      </div>
+
+      <!-- Grouped Logging -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">3. Grouped Console Messages</h3>
+        <p class="text-muted mb-3">Organize console output with groups</p>
+        <button class="btn btn-primary" (click)="runGroupedLogging()">Run Grouped Logging</button>
+        <div class="code-block mt-3">
+          <pre>console.group('Application Startup');
+console.log('Initializing...');
+console.groupCollapsed('Security checks');
+console.log('Validating tokens...');
+console.groupEnd();</pre>
+        </div>
+      </div>
+
+      <!-- Object Logging -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">4. Console Object Logging</h3>
+        <p class="text-muted mb-3">Log complex objects and arrays to inspect their structure</p>
+        <button class="btn btn-primary" (click)="runObjectLogging()">Run Object Logging</button>
+        <div class="code-block mt-3">
+          <pre>const user = {{ '{' }} id: 1, name: 'John', preferences: {{ '{' }}...{{ '}' }} {{ '}' }};
+console.log('User object:', user);
+console.log('Complex array:', [1, 2, {{ '{' }}nested: 'object'{{ '}' }}]);</pre>
+        </div>
+      </div>
+
+      <!-- Output Display -->
+      <div class="demo-section" *ngIf="logOutput.length > 0">
+        <h3 class="h4 mb-3">Output Preview</h3>
+        <div class="demo-output">
+          <div *ngFor="let line of logOutput; index as i">{{ line }}</div>
+        </div>
+        <button class="btn btn-outline-secondary btn-sm mt-2" (click)="clearOutput()">Clear Output</button>
+      </div>
+
+      <!-- Instructions -->
+      <div class="alert alert-info">
+        <h5 class="alert-heading">💡 How to Use:</h5>
+        <ol class="mb-0">
+          <li>Open your browser's Developer Tools (F12)</li>
+          <li>Navigate to the <strong>Console</strong> tab</li>
+          <li>Click the buttons above to see different console methods in action</li>
+          <li>Observe how different console methods appear in the DevTools</li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+</div>

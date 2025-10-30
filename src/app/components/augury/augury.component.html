@@ -1,0 +1,100 @@
+<a routerLink="/" class="btn btn-secondary back-btn">← Back to Home</a>
+
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="display-5 fw-bold text-primary">🔧 Angular DevTools (Augury) Demo</h1>
+    <p class="lead text-muted">Inspect component hierarchy, inputs, outputs, and state changes</p>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      
+      <!-- Parent Component State -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">👨‍👩‍👧‍👦 Parent Component State</h3>
+        <div class="card mb-3">
+          <div class="card-header bg-primary text-white">
+            <h6 class="mb-0">👨 Parent Component</h6>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <strong>Parent Message:</strong><br>
+                <span class="text-info">{{ parentMessage }}</span>
+              </div>
+              <div class="col-md-6">
+                <strong>Counter Value:</strong><br>
+                <span class="text-success">{{ counterValue }}</span>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-6">
+                <strong>Items Array:</strong><br>
+                <small>{{ items.join(', ') }}</small>
+              </div>
+              <div class="col-md-6">
+                <strong>User Object:</strong><br>
+                <small>{{ user.name }} - {{ user.role }} ({{ user.active ? 'Active' : 'Inactive' }})</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Parent Actions -->
+        <button class="btn btn-primary me-2" (click)="updateParentData()">Update Parent Data</button>
+        <button class="btn btn-outline-success me-2" (click)="addItem()">Add Item</button>
+        <button class="btn btn-outline-secondary" (click)="resetData()">Reset All</button>
+      </div>
+
+      <!-- Child Component -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">👶 Child Component with Input/Output</h3>
+        <app-child 
+          [message]="parentMessage"
+          [counter]="counterValue"
+          [userData]="user"
+          (messageChange)="onChildMessage($event)"
+          (counterChange)="onCounterChange($event)">
+        </app-child>
+      </div>
+
+      <!-- Instructions -->
+      <div class="alert alert-info">
+        <h5 class="alert-heading">🔧 How to Use Angular DevTools:</h5>
+        <ol class="mb-3">
+          <li><strong>Install Angular DevTools:</strong>
+            <ul class="mt-2">
+              <li>Chrome: Search "Angular DevTools" in Chrome Web Store</li>
+              <li>Firefox: Search "Angular DevTools" in Firefox Add-ons</li>
+            </ul>
+          </li>
+          <li>Open Developer Tools (F12) → Find <strong>"⭕ Angular"</strong> tab</li>
+          <li>Explore the component tree in the left panel</li>
+          <li>Click on components to see their properties and state</li>
+          <li>Interact with the buttons above and watch state changes in real-time</li>
+        </ol>
+        
+        <div class="alert alert-success">
+          <strong>🔍 What to Inspect:</strong>
+          <ul class="mb-0">
+            <li><strong>Component Tree:</strong> Parent-child relationship hierarchy</li>
+            <li><strong>Properties:</strong> &#64;Input(), &#64;Output(), and local component state</li>
+            <li><strong>Injector:</strong> Services and dependencies</li>
+            <li><strong>Router:</strong> Current route and route parameters</li>
+          </ul>
+        </div>
+        
+        <div class="alert alert-warning">
+          <strong>💡 Debug Techniques:</strong>
+          <ul class="mb-0">
+            <li>Watch how &#64;Input() properties change when parent updates data</li>
+            <li>See &#64;Output() events trigger when child components emit</li>
+            <li>Inspect component state before and after user interactions</li>
+            <li>Use the "Profiler" tab to analyze performance and change detection</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

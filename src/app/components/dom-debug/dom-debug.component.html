@@ -1,0 +1,110 @@
+<a routerLink="/" class="btn btn-secondary back-btn">← Back to Home</a>
+
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="display-5 fw-bold text-primary">🔗 DOM & Data Binding Debug</h1>
+    <p class="lead text-muted">Debug Angular data binding issues and DOM manipulation problems</p>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      
+      <!-- Data Binding Issues -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">1. Null/Undefined Binding Issues</h3>
+        <p class="text-muted mb-3">Common issue: trying to display properties of null/undefined objects</p>
+        
+        <!-- This will show an error when user is null -->
+        <div class="alert alert-secondary">
+          <strong>User Info:</strong><br>
+          <!-- Safe navigation to prevent errors -->
+          Name: {{ user?.name || 'No user data' }}<br>
+          Email: {{ user?.email || 'No email' }}<br>
+          Age: {{ user?.age || 'No age' }}
+        </div>
+        
+        <!-- This would cause errors without safe navigation: -->
+        <!-- Name: {{ user.name }} <-- Error when user is null -->
+        
+        <button class="btn btn-success me-2" (click)="fixUserBinding()">Fix User Binding</button>
+        <button class="btn btn-warning" (click)="simulateError()">Simulate Binding Error</button>
+      </div>
+
+      <!-- Dynamic Lists -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">2. Dynamic List Rendering</h3>
+        <p class="text-muted mb-3">Debug issues with *ngFor and dynamic list updates</p>
+        
+        <div class="demo-output mb-3">
+          <strong>Items ({{ items.length }}):</strong>
+          <ul class="list-unstyled">
+            <li *ngFor="let item of items; index as i; trackBy: trackByIndex" class="mb-1">
+              {{ i + 1 }}. {{ item }}
+            </li>
+          </ul>
+        </div>
+        
+        <button class="btn btn-primary me-2" (click)="addItem()">Add Item</button>
+        <button class="btn btn-outline-danger" (click)="removeItem()">Remove Item</button>
+      </div>
+
+      <!-- Property Binding -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">3. Property & Event Binding</h3>
+        <p class="text-muted mb-3">Debug property binding and event handling</p>
+        
+        <div class="demo-output mb-3">
+          <p><strong>Count:</strong> {{ count }}</p>
+          <p><strong>Message:</strong> {{ message }}</p>
+          <p><strong>Visibility:</strong> {{ isVisible ? 'Visible' : 'Hidden' }}</p>
+          
+          <div [class.d-none]="!isVisible" class="alert alert-info">
+            This div visibility is controlled by property binding!
+          </div>
+        </div>
+        
+        <button class="btn btn-outline-primary me-2" (click)="incrementCount()">Increment Count</button>
+        <button class="btn btn-outline-secondary me-2" (click)="toggleVisibility()">Toggle Visibility</button>
+        <button class="btn btn-outline-info" (click)="updateMessage()">Update Message</button>
+      </div>
+
+      <!-- Reset Controls -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">4. Reset & Testing</h3>
+        <button class="btn btn-warning" (click)="resetAll()">Reset All Data</button>
+      </div>
+
+      <!-- Instructions -->
+      <div class="alert alert-info">
+        <h5 class="alert-heading">🔗 How to Debug Data Binding Issues:</h5>
+        <ol class="mb-3">
+          <li>Open Developer Tools (F12) → <strong>Elements</strong> tab</li>
+          <li>Find the HTML elements in the DOM tree</li>
+          <li>Look for Angular-specific attributes like <code>ng-reflect-*</code></li>
+          <li>Use <strong>Angular DevTools</strong> extension for component inspection</li>
+          <li>Check the <strong>Console</strong> for binding errors</li>
+        </ol>
+        
+        <div class="alert alert-success">
+          <strong>🔍 Common Debugging Techniques:</strong>
+          <ul class="mb-0">
+            <li><strong>Safe Navigation:</strong> Use <code>object?.property</code> to avoid null errors</li>
+            <li><strong>TrackBy Functions:</strong> Help Angular track list items efficiently</li>
+            <li><strong>Angular DevTools:</strong> Inspect component properties and change detection</li>
+            <li><strong>Console Logging:</strong> Add logs in component methods to trace execution</li>
+          </ul>
+        </div>
+        
+        <div class="alert alert-warning">
+          <strong>💡 Pro Tips:</strong>
+          <ul class="mb-0">
+            <li>Use TypeScript strict mode to catch binding issues at compile time</li>
+            <li>Initialize objects with default values to prevent null errors</li>
+            <li>Use async pipe for observables to handle loading states</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,1 +1,111 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Global styles for Angular Debug Playground
+body {
+  background-color: #f8f9fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+.card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-brand {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.display-4 {
+  font-weight: 300;
+  color: #495057;
+}
+
+.lead {
+  color: #6c757d;
+}
+
+.btn-outline-primary {
+  border-width: 2px;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-outline-primary:hover {
+  transform: translateY(-1px);
+}
+
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.demo-section {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.demo-output {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-top: 1rem;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.9rem;
+}
+
+.error-text {
+  color: #dc3545;
+  font-weight: 500;
+}
+
+.success-text {
+  color: #198754;
+  font-weight: 500;
+}
+
+.warning-text {
+  color: #ffc107;
+  font-weight: 500;
+}
+
+// Code highlighting
+.code-block {
+  background-color: #2d3748;
+  color: #e2e8f0;
+  padding: 1rem;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.9rem;
+  overflow-x: auto;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .back-btn {
+    position: static;
+    margin-bottom: 1rem;
+  }
+}

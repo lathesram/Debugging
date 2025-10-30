@@ -1,0 +1,79 @@
+<a routerLink="/" class="btn btn-secondary back-btn">← Back to Home</a>
+
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="display-5 fw-bold text-primary">🔍 Breakpoints Demo</h1>
+    <p class="lead text-muted">Learn to set and use breakpoints for debugging loops and function calls</p>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      
+      <!-- Loop Breakpoints -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">1. Loop with Breakpoints</h3>
+        <p class="text-muted mb-3">Set breakpoints inside the loop to inspect variables at each iteration</p>
+        <button class="btn btn-primary" (click)="runCalculationLoop()" [disabled]="isRunning">
+          {{ isRunning ? 'Running...' : 'Run Calculation Loop' }}
+        </button>
+        <div class="code-block mt-3">
+          <pre>for (let i = 0; i &lt; numbers.length; i++) {{ '{' }}
+  const currentNumber = numbers[i];
+  total += currentNumber;
+  
+  this.processNumber(currentNumber, total);
+{{ '}' }}</pre>
+        </div>
+      </div>
+
+      <!-- Nested Function Breakpoints -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">2. Call Stack Inspection</h3>
+        <p class="text-muted mb-3">Set breakpoints in nested functions to inspect the call stack</p>
+        <button class="btn btn-primary" (click)="runNestedFunction()">Run Nested Functions</button>
+        <div class="code-block mt-3">
+          <pre>levelOne() {{ '{' }}
+  const data = {{ '{' }} level: 1, message: 'Hello' {{ '}' }};
+  this.levelTwo(data);
+{{ '}' }}
+
+levelTwo(data: any) {{ '{' }}
+  data.level = 2;
+  this.levelThree(data);
+{{ '}' }}</pre>
+        </div>
+      </div>
+
+      <!-- Results Display -->
+      <div class="demo-section" *ngIf="results.length > 0">
+        <h3 class="h4 mb-3">Execution Results</h3>
+        <div class="demo-output">
+          <div *ngFor="let result of results">{{ result }}</div>
+        </div>
+        <button class="btn btn-outline-secondary btn-sm mt-2" (click)="clearResults()">Clear Results</button>
+      </div>
+
+      <!-- Instructions -->
+      <div class="alert alert-info">
+        <h5 class="alert-heading">🔍 How to Use Breakpoints:</h5>
+        <ol class="mb-3">
+          <li>Open Developer Tools (F12) and go to the <strong>Sources</strong> tab</li>
+          <li>Find this component file in the file explorer</li>
+          <li>Click on the line numbers to set breakpoints</li>
+          <li>Run the demo functions above</li>
+          <li>When execution pauses, inspect variables in the <strong>Scope</strong> panel</li>
+          <li>Use controls: Continue (F8), Step Over (F10), Step Into (F11)</li>
+        </ol>
+        <div class="alert alert-warning">
+          <strong>💡 Pro Tips:</strong>
+          <ul class="mb-0">
+            <li>Check the <strong>Call Stack</strong> panel to see function hierarchy</li>
+            <li>Hover over variables to see their current values</li>
+            <li>Use the <strong>Watch</strong> panel to monitor specific expressions</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

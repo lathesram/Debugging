@@ -1,0 +1,90 @@
+<a routerLink="/" class="btn btn-secondary back-btn">← Back to Home</a>
+
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="display-5 fw-bold text-primary">⏸️ Debugger Keyword Demo</h1>
+    <p class="lead text-muted">Use the debugger statement to pause execution programmatically</p>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      
+      <!-- Basic Debugger -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">1. Basic Debugger Statement</h3>
+        <p class="text-muted mb-3">Simple debugger that pauses execution immediately</p>
+        <button class="btn btn-primary" (click)="runBasicDebugger()">Run Basic Debugger</button>
+      </div>
+
+      <!-- Conditional Debugger -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">2. Conditional Debugger</h3>
+        <p class="text-muted mb-3">Debugger inside a condition - only pauses when i === 5</p>
+        <button class="btn btn-warning" (click)="runConditionalDebugger()">Run Conditional Debugger</button>
+      </div>
+
+      <!-- Function Debugger -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">3. Function with Debugger</h3>
+        <p class="text-muted mb-3">Debugger inside functions to inspect parameters and local variables</p>
+        <button class="btn btn-info" (click)="runFunctionDebugger()">Run Function Debugger</button>
+      </div>
+
+      <!-- Async Debugger -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">4. Async Debugger (setTimeout)</h3>
+        <p class="text-muted mb-3">Debugger in asynchronous callbacks</p>
+        <button class="btn btn-success" (click)="runAsyncDebugger()">Run Async Debugger</button>
+      </div>
+
+      <!-- Results Display -->
+      <div class="demo-section" *ngIf="results.length > 0">
+        <h3 class="h4 mb-3">Execution Results</h3>
+        <div class="demo-output">
+          <div *ngFor="let result of results">{{ result }}</div>
+        </div>
+        <button class="btn btn-outline-secondary btn-sm mt-2" (click)="clearResults()">Clear Results</button>
+      </div>
+
+      <!-- Instructions -->
+      <div class="alert alert-info">
+        <h5 class="alert-heading">⏸️ How to Use the Debugger Statement:</h5>
+        <ol class="mb-3">
+          <li><strong>Ensure DevTools is open</strong> - debugger only works when DevTools is active</li>
+          <li>Click any button above to trigger the debugger statements</li>
+          <li>When execution pauses, you'll see the debugger controls appear</li>
+          <li>Use the debugging controls:
+            <ul class="mt-2">
+              <li><strong>Continue (F8):</strong> Resume execution</li>
+              <li><strong>Step Over (F10):</strong> Execute next line</li>
+              <li><strong>Step Into (F11):</strong> Enter function calls</li>
+              <li><strong>Step Out (Shift+F11):</strong> Exit current function</li>
+            </ul>
+          </li>
+          <li>Inspect variables in the <strong>Scope</strong> panel</li>
+        </ol>
+        
+        <div class="alert alert-success">
+          <strong>⏸️ When to Use debugger:</strong>
+          <ul class="mb-0">
+            <li><strong>Hard-to-reach code:</strong> Deep in conditional logic</li>
+            <li><strong>Async operations:</strong> Inside callbacks, promises, observables</li>
+            <li><strong>Event handlers:</strong> When setting breakpoints is difficult</li>
+            <li><strong>Production debugging:</strong> Temporary debugging in deployed code</li>
+          </ul>
+        </div>
+        
+        <div class="alert alert-warning">
+          <strong>💡 Important Notes:</strong>
+          <ul class="mb-0">
+            <li>Remove debugger statements before production deployment</li>
+            <li>debugger only works when DevTools is open</li>
+            <li>In production builds, debugger statements are often removed automatically</li>
+            <li>Use sparingly - prefer breakpoints for most debugging scenarios</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

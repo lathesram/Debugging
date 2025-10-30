@@ -1,3 +1,29 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { ConsoleLoggingComponent } from './components/console-logging/console-logging.component';
+import { BreakpointsComponent } from './components/breakpoints/breakpoints.component';
+import { ConditionalBreakpointsComponent } from './components/conditional-breakpoints/conditional-breakpoints.component';
+import { NetworkDebugComponent } from './components/network-debug/network-debug.component';
+import { NetworkOverrideComponent } from './components/network-override/network-override.component';
+import { SourceMapsComponent } from './components/source-maps/source-maps.component';
+import { DomDebugComponent } from './components/dom-debug/dom-debug.component';
+import { NetworkTabComponent } from './components/network-tab/network-tab.component';
+import { AuguryComponent } from './components/augury/augury.component';
+import { DebuggerKeywordComponent } from './components/debugger-keyword/debugger-keyword.component';
+import { RxjsDebugComponent } from './components/rxjs-debug/rxjs-debug.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'console-logging', component: ConsoleLoggingComponent },
+  { path: 'breakpoints', component: BreakpointsComponent },
+  { path: 'conditional-breakpoints', component: ConditionalBreakpointsComponent },
+  { path: 'network-debug', component: NetworkDebugComponent },
+  { path: 'network-override', component: NetworkOverrideComponent },
+  { path: 'source-maps', component: SourceMapsComponent },
+  { path: 'dom-debug', component: DomDebugComponent },
+  { path: 'network-tab', component: NetworkTabComponent },
+  { path: 'augury', component: AuguryComponent },
+  { path: 'debugger-keyword', component: DebuggerKeywordComponent },
+  { path: 'rxjs-debug', component: RxjsDebugComponent },
+  { path: '**', redirectTo: '' }
+];

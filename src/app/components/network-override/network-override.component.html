@@ -1,0 +1,104 @@
+<a routerLink="/" class="btn btn-secondary back-btn">← Back to Home</a>
+
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="display-5 fw-bold text-primary">🔄 Network Override Demo</h1>
+    <p class="lead text-muted">Learn to override API responses using DevTools for testing different scenarios</p>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      
+      <!-- API Requests -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">🌐 API Requests to Override</h3>
+        <p class="text-muted mb-3">These requests can be intercepted and modified in DevTools</p>
+        
+        <div class="d-flex gap-2 mb-3">
+          <button class="btn btn-primary" (click)="fetchUserData()" [disabled]="isLoading">
+            {{ isLoading ? 'Loading...' : 'Fetch User Data' }}
+          </button>
+          <button class="btn btn-outline-primary" (click)="fetchPosts()" [disabled]="isLoading">
+            {{ isLoading ? 'Loading...' : 'Fetch Posts' }}
+          </button>
+          <button class="btn btn-outline-secondary" (click)="clearData()">
+            Clear Data
+          </button>
+        </div>
+        
+        <div class="alert alert-info" *ngIf="requestCount > 0">
+          <small>Total requests made: <strong>{{ requestCount }}</strong></small>
+        </div>
+      </div>
+
+      <!-- Response Display -->
+      <div class="demo-section" *ngIf="apiData">
+        <h3 class="h4 mb-3">📋 API Response Data</h3>
+        <div class="demo-output">
+          <pre>{{ apiData | json }}</pre>
+        </div>
+      </div>
+
+      <!-- Instructions -->
+      <div class="alert alert-info">
+        <h5 class="alert-heading">🔄 How to Override Network Responses:</h5>
+        
+        <div class="alert alert-warning mb-3">
+          <strong>⚠️ Note:</strong> Network overrides require HTTPS or localhost. Since we're on localhost, this should work!
+        </div>
+        
+        <ol class="mb-3">
+          <li>Open Developer Tools (F12) → <strong>Network</strong> tab</li>
+          <li>Click the <strong>⚙️ Settings</strong> icon → Enable <strong>"Enable network request overrides"</strong></li>
+          <li>Choose a folder to store override files (or create a new one)</li>
+          <li>Make a request by clicking buttons above</li>
+          <li>In the Network tab, <strong>right-click</strong> on the request</li>
+          <li>Select <strong>"Override content"</strong></li>
+          <li>DevTools will open an editor with the response</li>
+          <li>Modify the JSON response (e.g., change names, add fields)</li>
+          <li>Save the file (Ctrl+S)</li>
+          <li>Make the request again - you'll see your modified response!</li>
+        </ol>
+        
+        <div class="alert alert-success">
+          <strong>💡 Try These Override Examples:</strong>
+          <ul class="mb-0">
+            <li><strong>User Data:</strong> Change the name from "Leanne Graham" to "Your Name"</li>
+            <li><strong>Add Fields:</strong> Add a new field like "department": "Engineering"</li>
+            <li><strong>Modify Arrays:</strong> Add/remove posts or change their titles</li>
+            <li><strong>Error Simulation:</strong> Return an error response instead of success</li>
+          </ul>
+        </div>
+        
+        <div class="alert alert-warning">
+          <strong>🔧 Use Cases:</strong> Test different API responses, simulate errors, and mock data while developing.
+        </div>
+      </div>
+
+      <!-- Example Override JSON -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">📝 Example Override Data</h3>
+        <p class="text-muted mb-3">You can replace the API response with data like this:</p>
+        
+        <div class="code-block">
+          <pre>{{ '{' }}
+  "id": 1,
+  "name": "Your Custom Name",
+  "username": "customuser",
+  "email": "custom&#64;example.com",
+  "address": {{ '{' }}
+    "street": "Custom Street",
+    "city": "Debug City"
+  {{ '}' }},
+  "company": {{ '{' }}
+    "name": "Debug Company",
+    "catchPhrase": "Debugging made easy!"
+  {{ '}' }},
+  "customField": "This field was added via override!"
+{{ '}' }}</pre>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

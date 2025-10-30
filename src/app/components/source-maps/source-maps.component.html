@@ -1,0 +1,68 @@
+<a routerLink="/" class="btn btn-secondary back-btn">← Back to Home</a>
+
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="display-5 fw-bold text-primary">📍 Source Maps & Error Tracing Demo</h1>
+    <p class="lead text-muted">Learn to read stack traces and navigate to source code using source maps</p>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      
+      <!-- Simple Error -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">1. Simple Error Stack Trace</h3>
+        <p class="text-muted mb-3">Throw a basic error and examine the stack trace in console</p>
+        <button class="btn btn-danger" (click)="triggerSimpleError()">Trigger Simple Error</button>
+      </div>
+
+      <!-- Nested Error -->
+      <div class="demo-section">
+        <h3 class="h4 mb-3">2. Nested Function Error</h3>
+        <p class="text-muted mb-3">Error from deep nested functions to see the full call stack</p>
+        <button class="btn btn-warning" (click)="triggerNestedError()">Trigger Nested Error</button>
+      </div>
+
+
+
+      <!-- Error Display -->
+      <div class="alert alert-danger" *ngIf="errorMessage">
+        <h6 class="alert-heading">Error Caught:</h6>
+        <p class="mb-2">{{ errorMessage }}</p>
+        <button class="btn btn-outline-danger btn-sm" (click)="clearError()">Clear Error</button>
+      </div>
+
+      <!-- Instructions -->
+      <div class="alert alert-info">
+        <h5 class="alert-heading">📍 How to Use Source Maps for Debugging:</h5>
+        <ol class="mb-3">
+          <li>Open Developer Tools (F12) → <strong>Console</strong> tab</li>
+          <li>Click any button above to trigger errors</li>
+          <li>Look for the red error messages in the console</li>
+          <li>Click on the <strong>filename:line</strong> links in the stack trace</li>
+          <li>DevTools will take you directly to the source code line</li>
+          <li>Examine the <strong>Call Stack</strong> panel to see function hierarchy</li>
+        </ol>
+        
+        <div class="alert alert-success">
+          <strong>🔍 What to Look For in Stack Traces:</strong>
+          <ul class="mb-0">
+            <li><strong>Function names:</strong> Which function threw the error</li>
+            <li><strong>File paths:</strong> Which component/service has the issue</li>
+            <li><strong>Line numbers:</strong> Exact location of the problem</li>
+            <li><strong>Call sequence:</strong> How functions called each other</li>
+          </ul>
+        </div>
+        
+        <div class="alert alert-warning">
+          <strong>💡 Source Maps:</strong>
+          <p class="mb-0">
+            Source maps allow you to debug your original TypeScript code even though the browser runs compiled JavaScript.
+            Without source maps, you'd see minified/compiled code that's hard to understand!
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
